@@ -1,0 +1,11 @@
+- hosts: 'servers' # Specify which hosts
+  become: true # Escalate to admin
+  tasks:
+      - name: update and upgrade OS # Name of first task
+        apt: # Use apt Module
+            update_cache: true # Update Ubuntu
+            upgrade: true # Upgrade Ubuntu
+
+# This is the equivelant of running the following commands on the server
+# sudo apt update
+# sudo apt upgrade

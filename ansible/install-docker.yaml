@@ -1,0 +1,27 @@
+- name: 'Setup Docker nodes'
+  hosts: 'docker'
+  become: true
+  tasks:
+      - name: update and upgrade OS
+        apt:
+            update_cache: true
+            upgrade: true
+      - name: install docker
+        apt:
+            name: docker.io
+            state: present
+            update_cache: true
+      - name: grant docker sudo permissions
+        user:
+            name: '{{ ansible_user }}'
+            groups: docker
+            append: true
+      - name: indentify yourself
+        shell: whoami
+# This is the equivelant of running the following commands on the server
+# sudo apt update
+# sudo apt upgrade
+# sudo apt update
+# sudo apt install docker.io
+# sudo usermod -aG docker $USER
+# sudo whoami

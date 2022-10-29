@@ -1,0 +1,11 @@
+[servers]
+server-001
+server-002
+server-003
+
+[docker]
+server-002
+server-003
+
+[frontend]
+server-001
