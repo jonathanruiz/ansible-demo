@@ -1,4 +1,4 @@
-# Ansible Demo
+# Ansible Demo Environment
 
 This repo contains the files necessary to deploy a ready-to-use sanbox environment to start learning to use Ansible. The deployent is made simple by deploying the environment on Azure using the Terraform.
 
