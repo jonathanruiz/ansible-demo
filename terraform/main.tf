@@ -112,7 +112,7 @@ resource "azurerm_public_ip" "jumpbox-public-ip" {
   name                = "jumpbox-public-nic"
   location            = azurerm_resource_group.ansible-demo.location
   resource_group_name = azurerm_resource_group.ansible-demo.name
-  allocation_method   = "Dyanmic"
+  allocation_method   = "Dynamic"
 }
 
 data "azurerm_public_ip" "data-jumpbox-public-ip" {
