@@ -7,9 +7,12 @@ variable "vm-ipaddr" {
 }
 
 variable "username" {
-  default = "<CHANGE-ME>"
+  type = string
+  description = "The username for the VMs"
 }
 
 variable "password" {
-  default = "<CHANGE-ME>"
+  type = string
+  description = "The password for the VMs"
+  sensitive = true
 }
