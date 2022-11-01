@@ -101,7 +101,8 @@ resource "azurerm_network_interface" "jumpbox-nic" {
   ip_configuration {
     name                          = "jumpbox-private"
     subnet_id                     = azurerm_subnet.server-subnet.id
-    private_ip_address_allocation = "Dynamic"
+    private_ip_address_allocation = "Static"
+    private_ip_address            = "10.0.1.10"
     public_ip_address_id          = azurerm_public_ip.jumpbox-public-ip.id
   }
 }
@@ -111,8 +112,7 @@ resource "azurerm_public_ip" "jumpbox-public-ip" {
   name                = "jumpbox-public-nic"
   location            = azurerm_resource_group.ansible-demo.location
   resource_group_name = azurerm_resource_group.ansible-demo.name
-  allocation_method   = "Static"
-  private_ip_address  = ["10.0.1.10"]
+  allocation_method   = "Dyanmic"
 }
 
 data "azurerm_public_ip" "data-jumpbox-public-ip" {
