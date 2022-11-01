@@ -112,7 +112,7 @@ resource "azurerm_public_ip" "jumpbox-public-ip" {
   location            = azurerm_resource_group.ansible-demo.location
   resource_group_name = azurerm_resource_group.ansible-demo.name
   allocation_method   = "Static"
-  private_ip_address  = "10.0.1.10"
+  private_ip_address  = ["10.0.1.10"]
 }
 
 data "azurerm_public_ip" "data-jumpbox-public-ip" {
