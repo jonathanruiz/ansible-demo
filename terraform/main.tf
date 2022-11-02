@@ -148,6 +148,21 @@ resource "azurerm_linux_virtual_machine" "jumpbox-vm" {
 
 }
 
+resource "azurerm_virtual_machine_extension" "server-extensions" {
+   name                 = azurerm_linux_virtual_machine.jumpbox-vm.name
+   virtual_machine_id   = azurerm_linux_virtual_machine.jumpbox-vm.id
+   publisher            = "Microsoft.Azure.Extensions"
+   type                 = "CustomScript"
+   type_handler_version = "2.0"
+
+   settings = <<SETTINGS
+  {
+   "commandToExecute": "apt update -y && apt update -y && apt install ansible -y && apt install -y sshpass"
+  }
+ SETTINGS
+ }
+
+
 # Copy files to jumpbox and run setup
 resource "null_resource" "setup-ansible" {
 
@@ -164,17 +179,17 @@ resource "null_resource" "setup-ansible" {
     destination = "/home/${var.username}/ansible"
   }
 
-  provisioner "file" {
-    source      = "install_ansible.sh"
-    destination = "/home/${var.username}/install_ansible.sh"
-  }
+  # provisioner "file" {
+  #   source      = "install_ansible.sh"
+  #   destination = "/home/${var.username}/install_ansible.sh"
+  # }
 
-  provisioner "remote-exec" {
-    inline = [
-      "chmod +x /home/${var.username}/install_ansible.sh",
-      "/home/${var.username}/install_ansible.sh"
-    ]
-  }
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "chmod +x /home/${var.username}/install_ansible.sh",
+  #     "/home/${var.username}/install_ansible.sh"
+  #   ]
+  # }
 }
 
 # Output SSH command
