@@ -8,11 +8,11 @@ This repo contains the files necessary to deploy a ready-to-use sanbox environme
 
 If you wish to set the environent from your local machine, you will need to make sure the following tools are installed:
 
-- Azure CLI or Azure PowerShell
-- Git
-- Terraform
+- `Azure CLI` or `Azure PowerShell`
+- `Git`
+- `Terraform`
 
-Using the Azure CLI or PowerShell, set the subscription you wish to use for your deployment.
+Using the `Azure CLI` or `Azure PowerShell`, set the subscription you wish to use for your deployment.
 
 ### Azure Cloud Shell
 
