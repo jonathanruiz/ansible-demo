@@ -28,32 +28,38 @@ Once the cloud shell is created, you can proceed with the next steps.
 git clone https://github.com/jonathanruiz/ansible-demo.git
 ```
 
-2. In the `terraform` folder, there is a file named `variables.tf`. Open the file.
-
-3. Change the values of the `username` and `password` variables. Find the values that says `CHANGE-ME` and change them to strong username and passwords.
-
-4. Run initialize Terraform.
+2. Run initialize Terraform.
 
 ```
 terraform init
 ```
 
-5. Deploy the resources.
+3. Deploy the resources.
 
 ```
 terraform apply
 ```
 
-6. Once deployed, there will be an output for the SSH command necessary to be able to SSH into the `jumpbox` virtual machine. The output should look something like:
+4. You will be prompted to fill in some values. Input the desired `username` and `password`.
+
+5. Once deployed, there will be an output for the SSH command necessary to be able to SSH into the `jumpbox` virtual machine. The output should look something like:
 
 ```
 ssh username@<Public-IP-Address>
 ```
 
-7. Once connected, change the directory to the `ansible` folder.
+6. Once connected, change the directory to the `ansible` folder.
 
 ```
 cd ansible
 ```
 
-8. You are now ready to start running Ansible Playbooks. In the `ansible` directory, you should see some playbooks to get you started.
+7. You are now ready to start running Ansible Playbooks. In the `ansible` directory, you should see some playbooks to get you started.
+
+## Run a Playbook
+
+To run your first playbook, run the following command:
+
+```
+ansible-playbook update-upgrade.yaml -i hosts --user <username> --ask-pass
+```
