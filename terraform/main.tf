@@ -148,21 +148,6 @@ resource "azurerm_linux_virtual_machine" "jumpbox-vm" {
 
 }
 
-resource "azurerm_virtual_machine_extension" "example" {
-  count                = length(var.vm-ipaddr)
-  name                 = "servers-00${count.index + 1}-extension"
-  virtual_machine_id   = azurerm_linux_virtual_machine.server-vms[count].id
-  publisher            = "Microsoft.Azure.Extensions"
-  type                 = "CustomScript"
-  type_handler_version = "2.0"
-
-  settings = <<SETTINGS
- {
-  "commandToExecute": "sudo apt update && sudo apt install -y sshpass"
- }
-SETTINGS
-}
-
 # Copy files to jumpbox and run setup
 resource "null_resource" "setup-ansible" {
 
