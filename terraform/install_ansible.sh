@@ -7,4 +7,7 @@ echo "Running apt upgrade"
 sudo apt update -y
 
 echo "Installing nginx"
-sudo apt-get install ansible -y
+sudo apt install ansible -y
+
+echo "Installing sshpass"
+sudo apt install sshpass -y
