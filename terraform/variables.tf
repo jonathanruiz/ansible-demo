@@ -15,5 +15,4 @@ variable "password" {
   type = string
   description = "The password for the VMs"
   sensitive = true
-
 }
